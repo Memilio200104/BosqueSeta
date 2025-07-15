@@ -16,9 +16,9 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
   
   <!-- Aos CDN -->
-<link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
-<!-- Leaflet CSS -->
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="{% static 'img/favicon-96x96.png' %}" sizes="96x96" />
   <link rel="icon" type="image/svg+xml" href="{% static 'img/favicon.svg' %}" />
@@ -98,7 +98,7 @@
 </nav>
 {% include 'hero.html' %}
 {% include 'about.html' %}
-{% include 'map.html' with productores_json=productores_json %}
+{% include 'map.html' with productores=productores %}
 
 <script src="{% static 'js/switch-icons.js' %}"></script>
 <script src="{% static 'js/scroll-section.js' %}"></script>

@@ -3,13 +3,13 @@
   --color-fondo-oscuro: #322213;
   --color-fondo-medio: #644526;
   --color-fondo-claro: #a67340;
-
+  
   --color-texto-claro: #FDFF85;
   --color-texto-secundario: #EAE7E5;
   --color-acento: #D9B176;
   --color-sombra-oscura: #140e08;
   --color-sombra-suave: #a28f7d;
-
+  
   --fuente-titulo: 'Geometr212-heavy', sans-serif;
   --fuente-subtitulo: 'Geometr212-book', sans-serif;
   --fuente-parrafo: 'Montserrat-regular', sans-serif;
@@ -83,7 +83,7 @@ p {
   position: relative;
   display: inline-block;
   white-space: nowrap;
-    font-size: 1rem;
+  font-size: 1rem;
 }
 
 .navbar-nav .nav-item {
@@ -111,13 +111,13 @@ p {
     height: 2.75rem;
     margin: 0 auto;
   }
-
+  
   .nav-link {
     font-size: 1rem;
     text-align: center;
     padding: 0.5rem 0;
   }
-
+  
   .navbar-nav {
     align-items: center;
   }
@@ -181,7 +181,12 @@ p {
 .custom-navbar.scrolled .navbar-brand {
   color: #000000 !important;
 }
-
+.section {
+  background-color: transparent !important;
+  position: relative;
+  z-index: 1;
+  padding: 100px 0;
+}
 /* Hero section */
 
 .hero-bosque {
@@ -225,7 +230,7 @@ p {
   .hero-text h1 {
     font-size: 2.5rem;
   }
-
+  
   .logo-img-hero {
     width: 60vw;
     margin: 1rem 0;
@@ -272,7 +277,7 @@ p {
 
 .scroll-ref {
   text-decoration: none;
-   scroll-behavior: smooth;
+  scroll-behavior: smooth;
 }
 
 .shadow-dance-text {
@@ -308,26 +313,26 @@ p {
 }
 /* About section ouyeah beibeeee */
 .masked-text {
-    font-size: 3.5rem;
-    font-weight: bold;
-    text-align: center;
-    color: transparent;
-    background-image: url('https://images.unsplash.com/photo-1732535725600-f805d8b33c9c?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'); 
-    background-size: 200%; 
-    background-position: 0 50%;
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    animation: animate-background 5s infinite alternate linear;
+  font-size: 3.5rem;
+  font-weight: bold;
+  text-align: center;
+  color: transparent;
+  background-image: url('https://images.unsplash.com/photo-1732535725600-f805d8b33c9c?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'); 
+  background-size: 200%; 
+  background-position: 0 50%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: animate-background 5s infinite alternate linear;
 }
 
 @keyframes animate-background {
-    0% {
-        background-position: 0 50%;
-    }
-    100% {
-        background-position: 100% 50%;
-    }
+  0% {
+    background-position: 0 50%;
+  }
+  100% {
+    background-position: 100% 50%;
+  }
 }
 
 #about-us {
@@ -348,7 +353,7 @@ p {
   line-height: 1.6;
   margin-bottom: 1.25rem;
 }
-  .img-about:hover {
+.img-about:hover {
   transform: scale(1.03);
 }
 
@@ -366,127 +371,125 @@ p {
   transform: scale(1.03);
 }
 
-  @media (max-width: 768px) {
-    #about-us {
-      position: relative;
-      padding: 40px 0;
-      overflow: hidden;
-    }
-    
-    .card-about {
-      position: relative;
-      z-index: 2;
-    }
-    
-    .masking-container {
-      position: relative;
-      z-index: 3;
-      text-align: center;
-      margin-bottom: 30px;
-    }
-    
-    .img-about {
-      display: none; 
-    }
-    
-    #about-us::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-image: url("/static/img/hongos-about.jpg");
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-      z-index: 1;
-      opacity: 0.7; 
-    }
-    
-    #about-us::after {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(to bottom, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.5) 50%, rgba(0,0,0,0.8) 100%);
-      z-index: 1;
-    }
-    
-    .card-text {
-      position: relative;
-      z-index: 2;
-      background: rgba(0, 0, 0, 0.6);
-      padding: 20px;
-      border-radius: 10px;
-      margin: 0 15px;
-    }
-    
-    .masked-text {
-      text-shadow: 0 2px 4000px rgba(0,0,0,0.5);
-    }
+@media (max-width: 768px) {
+  #about-us {
+    position: relative;
+    padding: 40px 0;
+    overflow: hidden;
   }
   
-
-  @media (max-width: 576px) {
-    .card-text {
-      padding: 15px;
-      font-size: 0.95rem;
-    }
-    
-    .masked-text {
-      font-size: 1.8rem;
-    }
-    
-    #about-us::before {
-      background-attachment: fixed;
-    }
+  .card-about {
+    position: relative;
+    z-index: 2;
   }
-  /* Map section */
-  .map-error-box {
-  background-color: var(--color-fondo-medio);
-  border: 2px solid var(--color-acento);
-  color: var(--color-texto-claro);
-  padding: 2rem 1.5rem;
-  border-radius: 1rem;
-  margin-top: 2rem;
-  max-width: 40rem;
-  margin-left: auto;
-  margin-right: auto;
-  box-shadow: 0 0 1rem var(--color-sombra-suave);
-  animation: fadeIn 0.6s ease-in-out;
+  
+  .masking-container {
+    position: relative;
+    z-index: 3;
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  
+  .img-about {
+    display: none; 
+  }
+  
+  #about-us::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("/static/img/hongos-about.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 1;
+    opacity: 0.7; 
+  }
+  
+  #about-us::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.5) 50%, rgba(0,0,0,0.8) 100%);
+    z-index: 1;
+  }
+  
+  .card-text {
+    position: relative;
+    z-index: 2;
+    background: rgba(0, 0, 0, 0.6);
+    padding: 20px;
+    border-radius: 10px;
+    margin: 0 15px;
+  }
+  
+  .masked-text {
+    text-shadow: 0 2px 4000px rgba(0,0,0,0.5);
+  }
 }
 
-.map-error-text {
+
+@media (max-width: 576px) {
+  .card-text {
+    padding: 15px;
+    font-size: 0.95rem;
+  }
+  
+  .masked-text {
+    font-size: 1.8rem;
+  }
+  
+  #about-us::before {
+    background-attachment: fixed;
+  }
+}
+/* Map section */
+.mapa-productores-section {
+  background-color: transparent;
+  color: var(--color-texto-secundario);
   font-family: var(--fuente-parrafo);
-  font-size: 1.2rem;
-  margin-bottom: 1rem;
+  animation: fadeIn 1s ease-in-out;
 }
 
-.map-error-btn {
-  background-color: var(--color-acento);
-  color: #000;
-  font-weight: bold;
-  padding: 0.6rem 1.2rem;
-  border: none;
-  border-radius: 0.5rem;
-  transition: background-color 0.3s ease;
-  cursor: pointer;
+.mapa-productores-container {
+  width: 100%;
+  height: 500px;
+  border: 3px solid var(--color-acento);
+  border-radius: 1rem;
+  box-shadow: 0 0 6rem var(--color-sombra-suave);
+  transition: transform 0.3s ease;
 }
 
-.map-error-btn:hover {
-  background-color: #c9a060;
+.mapa-productores-container:hover {
+  transform: scale(1.01);
 }
 
-@keyframes fadeIn {
-  0% {
-    opacity: 0;
-    transform: translateY(1rem);
+.section-title {
+  font-family: var(--fuente-titulo);
+  color: var(--color-texto-claro);
+  text-shadow: 2px 2px 4px var(--color-sombra-oscura);
+}
+
+.lead {
+  font-family: var(--fuente-parrafo);
+  font-size: 1.1rem;
+  color: var(--color-texto-secundario);
+}
+
+@media (max-width: 768px) {
+  .mapa-productores-container {
+    height: 400px;
   }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
+  
+  .lead {
+    font-size: 1rem;
   }
 }
+
+

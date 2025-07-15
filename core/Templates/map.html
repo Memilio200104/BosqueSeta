@@ -1,115 +1,58 @@
 {% load static %}
-<section class="section" id="mapa-productores">
-  <div data-aos="fade-up" class="text-center mb-4">
-    <h2 class="masked-text">Productores registrados</h2>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+<section class="section mapa-productores-section" data-aos="fade-up" id="map-section">
+  <div class="container">
+    <div class="row justify-content-center text-center mb-4">
+      <div class="col-lg-10">
+        <h2 class="section-title">Nuestros Productores de Hongos Seta</h2>
+        <p class="lead">
+          Descubre los productores registrados en nuestra plataforma de cultivo sostenible.
+        </p>
+      </div>
+    </div>
+    
+    <div class="row">
+      <div class="col-12">
+        <div id="map" class="mapa-productores-container"></div>
+      </div>
+    </div>
   </div>
-
-  <div id="mapa" style="height: 80vh; border-radius: 1rem; z-index: 1;"></div>
-  
-<div id="map-error" class="map-error-box d-none text-center">
-  <p class="map-error-text">No se pudieron cargar los productores. Por favor intenta recargar la página.</p>
-  <button class="map-error-btn" onclick="location.reload()">Recargar</button>
-</div>
-
-  {{ productores_json|json_script:"productores-data" }}
-
   <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const map = L.map('mapa').setView([23.6345, -102.5528], 5.2);
+    document.addEventListener("DOMContentLoaded", function () {
+      var map = L.map('map', {
+        center: [19.4326, -99.1332],
+        zoom: 5,
+        maxBounds: [
+        [-85, -180],
+        [85, 180]
+        ],
+        maxBoundsViscosity: 1.0,
+        worldCopyJump: false
+      });
       
       L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         maxZoom: 18,
-        attribution: '© OpenStreetMap'
+        minZoom: 2,
+        attribution: '© OpenStreetMap',
+        noWrap: true, 
+        bounds: [[-85, -180], [85, 180]] 
       }).addTo(map);
-
-      const iconoHongo = L.icon({
+      
+      var iconoHongo = L.icon({
         iconUrl: "{% static 'img/hongo-icon.png' %}",
-        iconSize: [36, 36],
-        iconAnchor: [18, 36],
-        popupAnchor: [0, -36],
-      });
-
-      // Obtener datos de productores de forma segura
-      const productoresData = document.getElementById('productores-data');
-      
-      // Verificar si existen los datos
-      if (!productoresData || !productoresData.textContent) {
-        showError("No se encontraron datos de productores");
-        return;
-      }
-      
-      let productores;
-      
-      try {
-        // Intentar parsear los datos
-        productores = JSON.parse(productoresData.textContent);
-      } catch (error) {
-        showError(`Error al procesar los datos: ${error.message}`);
-        return;
-      }
-      
-      // Verificar que sea un array
-      if (!Array.isArray(productores)) {
-        showError("Los datos de productores no tienen el formato correcto");
-        return;
-      }
-      
-      // Verificar si hay productores
-      if (productores.length === 0) {
-        showError("No hay productores registrados aún");
-        return;
-      }
-      
-      // Crear array de marcadores válidos
-      const markers = [];
-      
-      productores.forEach(p => {
-        // Verificar que existan las coordenadas
-        if (p.latitud && p.longitud) {
-          // Convertir a números
-          const lat = parseFloat(p.latitud);
-          const lng = parseFloat(p.longitud);
-          
-          // Verificar que sean números válidos
-          if (!isNaN(lat) && !isNaN(lng)) {
-            const marker = L.marker([lat, lng], { icon: iconoHongo })
-              .addTo(map)
-              .bindPopup(`
-                <div class="popup-content">
-                  <h5>${p.nombre || 'Productor'}</h5>
-                  <p>${p.direccion || 'Sin dirección registrada'}</p>
-                </div>
-              `);
-              
-            markers.push(marker);
-          }
-        }
+        iconSize: [40, 40],
+        iconAnchor: [20, 40],
+        popupAnchor: [0, -40]
       });
       
-      // Ajustar el mapa para mostrar todos los marcadores
-      if (markers.length > 0) {
-        const group = new L.featureGroup(markers);
-        map.fitBounds(group.getBounds().pad(0.1));
-      } else {
-        showError("No se encontraron ubicaciones válidas para los productores");
-      }
-      
-      // Función para mostrar errores
-      function showError(message) {
-        console.error(message);
-        document.getElementById('map-error').classList.remove('d-none');
-        document.getElementById('map-error').querySelector('p').textContent = message;
-        
-        // Mostrar marcador de error en el centro del mapa
-        L.marker([23.6345, -102.5528], { icon: iconoHongo })
-          .addTo(map)
-          .bindPopup(`
-            <div class="popup-content">
-              <h5>Error</h5>
-              <p>${message}</p>
-            </div>
-          `).openPopup();
-      }
+      {% for productor in productores %}
+      L.marker([{{ productor.latitud }}, {{ productor.longitud }}], { icon: iconoHongo })
+      .addTo(map)
+      .bindPopup("<strong>{{ productor.nombre }}</strong><br>{{ productor.direccion|linebreaksbr }}");
+      {% endfor %}
     });
+    
   </script>
 </section>
