@@ -77,7 +77,6 @@ p {
 }
 
 /* NAVBAR */
-
 .nav-link {
   transition: color 0.3s ease;
   position: relative;
@@ -182,13 +181,17 @@ p {
   color: #000000 !important;
 }
 .section {
-  background-color: transparent !important;
-  position: relative;
-  z-index: 1;
-  padding: 100px 0;
+  opacity: 0;
+  transform: translateY(60px);
+  transition: opacity 1s ease, transform 1s ease;
 }
-/* Hero section */
 
+.section.reveal {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Hero section */
 .hero-bosque {
   width: 100vw;
   height: 100vh;
@@ -311,20 +314,9 @@ p {
     transform: translateY(0.5rem);
   }
 }
+
 /* About section ouyeah beibeeee */
-.masked-text {
-  font-size: 3.5rem;
-  font-weight: bold;
-  text-align: center;
-  color: transparent;
-  background-image: url('https://images.unsplash.com/photo-1732535725600-f805d8b33c9c?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'); 
-  background-size: 200%; 
-  background-position: 0 50%;
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: animate-background 5s infinite alternate linear;
-}
+
 
 @keyframes animate-background {
   0% {
@@ -449,6 +441,7 @@ p {
     background-attachment: fixed;
   }
 }
+
 /* Map section */
 .mapa-productores-section {
   background-color: transparent;
@@ -492,4 +485,674 @@ p {
   }
 }
 
+/* Recetario section */
+.card {
+  background-color: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(4px);
+  border-radius: 1rem;
+  transition: transform 0.3s ease;
+}
 
+.card:hover {
+  transform: translateY(-5px);
+}
+.card-title {
+  color: var(--color-texto-claro);
+  font-family: var(--fuente-subtitulo);
+}
+
+.card-text {
+  font-family: var(--fuente-parrafo);
+  color: var(--color-texto-secundario);
+}
+.receta-img {
+  height: 200px;
+  object-fit: cover;
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 1rem;
+}
+@media (max-width: 768px) {
+  .slide {
+    width: 150px;
+    height: 150px;
+    margin: 0 0.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .slide {
+    width: 120px;
+    height: 120px;
+    margin: 0 0.3rem;
+  }
+}
+
+/* Productores section */
+.slider-section {
+  overflow-x: hidden;
+  position: relative;
+}
+
+.slider-productores {
+  overflow: hidden;
+  width: 100%;
+  background: transparent;
+  padding: 2rem 0;
+}
+
+.slider-track {
+  display: flex;
+  animation: scrollSlider 30s linear infinite;
+  min-width: 100%;
+  will-change: transform;
+}
+
+.slide {
+  flex: 0 0 auto;
+  width: 200px;
+  height: 200px;
+  margin: 0 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative; /* Ensure info is placed correctly */
+}
+
+.slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 1rem;
+  box-shadow: 0 0 10px #00000055;
+}
+
+.info {
+  display: none;
+  position: absolute;
+  top: -30px;  /* Ajusta la distancia de la barra respecto a la imagen */
+  left: 50%;
+  transform: translateX(-50%);  /* Centra el texto respecto a la imagen */
+  background-color: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: 8px;
+  border-radius: 5px;
+  text-align: center;
+  font-size: 14px;
+  width: 90%;
+  box-sizing: border-box;
+  z-index: 2;  /* Asegura que la barra esté por encima de las imágenes */
+}
+
+.slide:hover .info {
+  display: block;
+}
+
+/* Animación para el slider */
+@keyframes scrollSlider {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* RESPONSIVE SLIDER */
+@media (max-width: 768px) {
+  .slide {
+    width: 150px;
+    height: 150px;
+    margin: 0 0.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .slide {
+    width: 120px;
+    height: 120px;
+    margin: 0 0.3rem;
+  }
+}
+
+
+/* Footer */
+.footer-bosque {
+  background-color: var(--color-fondo-oscuro);
+  color: var(--color-texto-secundario);
+  font-family: var(--fuente-parrafo);
+  padding-top: 2rem;
+}
+
+.footer-title {
+  font-family: var(--fuente-subtitulo);
+  color: var(--color-texto-claro);
+  margin-bottom: 1rem;
+}
+
+.footer-text {
+  font-size: 0.95rem;
+  margin-bottom: 0.5rem;
+}
+
+.footer-links li a {
+  color: var(--color-texto-secundario);
+  text-decoration: none;
+  display: block;
+  margin-bottom: 0.3rem;
+  transition: color 0.3s ease;
+}
+
+.footer-links li a:hover {
+  color: var(--color-acento);
+}
+
+.footer-divider {
+  border-top: 1px solid var(--color-sombra-suave);
+  margin: 1.5rem 0;
+}
+
+.footer-copy {
+  font-size: 0.85rem;
+  color: var(--color-texto-secundario);
+}
+
+.footer-social a {
+  color: var(--color-acento);
+  font-size: 1.25rem;
+  margin-right: 1rem;
+  transition: color 0.3s ease;
+}
+
+.footer-social a:hover {
+  color: var(--color-texto-claro);
+}
+/* FOOTER RESPONSIVO */
+.footer-bosque {
+  background-color: var(--color-fondo-oscuro);
+  color: var(--color-texto-secundario);
+  font-family: var(--fuente-parrafo);
+  padding: 2rem 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.footer-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 2rem;
+  width: 100%;
+  max-width: 1200px;
+}
+
+.footer-column {
+  flex: 1 1 200px;
+  min-width: 200px;
+}
+
+.footer-title {
+  font-family: var(--fuente-subtitulo);
+  color: var(--color-texto-claro);
+  margin-bottom: 1rem;
+}
+
+.footer-text {
+  font-size: 0.95rem;
+  margin-bottom: 0.5rem;
+}
+
+.footer-links li a {
+  color: var(--color-texto-secundario);
+  text-decoration: none;
+  display: block;
+  margin-bottom: 0.3rem;
+  transition: color 0.3s ease;
+}
+
+.footer-links li a:hover {
+  color: var(--color-acento);
+}
+
+.footer-divider {
+  border-top: 1px solid var(--color-sombra-suave);
+  margin: 1.5rem 0;
+  width: 100%;
+}
+
+.footer-copy {
+  font-size: 0.85rem;
+  color: var(--color-texto-secundario);
+  text-align: center;
+  width: 100%;
+}
+
+.footer-social {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+  flex-wrap: wrap;
+}
+
+.footer-social a {
+  color: var(--color-acento);
+  font-size: 1.25rem;
+  margin: 0 0.75rem;
+  transition: color 0.3s ease;
+}
+
+.footer-social a:hover {
+  color: var(--color-texto-claro);
+}
+
+
+/* === MEJORAS AÑADIDAS POR CHATGPT === */
+
+/* === MEJORAS ADICIONALES ESTÉTICAS Y ANIMACIONES === */
+
+/* Fondo animado sutil */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  background: radial-gradient(circle at 20% 30%, rgba(253, 255, 133, 0.05), transparent 60%),
+              radial-gradient(circle at 80% 70%, rgba(217, 177, 118, 0.04), transparent 60%);
+  animation: backgroundMove 60s ease infinite;
+  background-size: 300% 300%;
+}
+
+@keyframes backgroundMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Transiciones y efectos más suaves */
+a, button, .nav-link, .card, .img-about, .navbar-logo {
+  transition: all 0.4s ease-in-out !important;
+}
+
+/* Scroll suave */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Scrollbar personalizada */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-fondo-medio);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-acento);
+  border-radius: 5px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-texto-claro);
+}
+
+/* Secciones con fondo dinámico animado */
+.section:nth-of-type(even) {
+  background: linear-gradient(120deg, var(--color-fondo-claro), var(--color-fondo-medio));
+  background-size: 200% 200%;
+  animation: shiftBG 20s ease infinite;
+}
+
+.section:nth-of-type(odd) {
+  background: linear-gradient(120deg, var(--color-fondo-medio), var(--color-fondo-oscuro));
+  background-size: 200% 200%;
+  animation: shiftBG 25s ease infinite;
+}
+
+@keyframes shiftBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Resplandor suave para textos destacados */
+h1:hover, h2:hover, .masked-text:hover {
+  text-shadow: 0 0 10px var(--color-acento), 0 0 20px var(--color-acento);
+  transform: scale(1.02);
+}
+
+/* Cards con brillo al pasar el mouse */
+.card:hover {
+  box-shadow: 0 0 25px rgba(217, 177, 118, 0.4);
+}
+
+/* Imagen flotante sutil */
+.img-about {
+  animation: floatSlow 6s ease-in-out infinite;
+}
+
+@keyframes floatSlow {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+/* Indicador de scroll con glow */
+.arrow-svg {
+  filter: drop-shadow(0 0 5px var(--color-acento));
+}
+
+/* Footer con animación de opacidad suave */
+.footer-bosque {
+  animation: fadeInFooter 2s ease-in;
+}
+
+@keyframes fadeInFooter {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+/* === MEJORAS EXTREMAS Y CONTRASTE ARREGLADO === */
+
+/* === MÁS ESTILO Y EFECTOS AL MÁXIMO NIVEL === */
+
+/* EFECTO PARALLAX LENTO EN SECCIONES */
+.section {
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* DESTACAR TÍTULOS CON ANIMACIONES DINÁMICAS */
+h1, h2 {
+  animation: pulseGlow 4s ease-in-out infinite;
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    text-shadow: 0 0 10px var(--color-acento), 0 0 20px var(--color-acento);
+  }
+  50% {
+    text-shadow: 0 0 25px var(--color-texto-claro), 0 0 40px var(--color-acento);
+  }
+}
+
+/* BOTONES INTERACTIVOS MÁS DINÁMICOS */
+button, .btn, .btn-primary {
+  animation: buttonPop 1.2s ease-in-out infinite alternate;
+  border-radius: 100px !important;
+  font-weight: bold !important;
+  text-transform: uppercase;
+  box-shadow: 0 0 10px rgba(253, 255, 133, 0.5);
+}
+
+@keyframes buttonPop {
+  0% { transform: scale(1); }
+  100% { transform: scale(1.05); }
+}
+
+/* FLARE INTERMITENTE EN ELEMENTOS DESTACADOS */
+.card:hover, .img-about:hover, .navbar-logo:hover {
+  box-shadow: 0 0 30px var(--color-acento), 0 0 60px rgba(253,255,133,0.4);
+}
+
+/* TEXTO ANIMADO COMO NEÓN */
+.masked-text {
+  animation: neonGlow 4s infinite ease-in-out alternate;
+}
+
+@keyframes neonGlow {
+  0% {
+    text-shadow: 0 0 5px var(--color-acento), 0 0 10px var(--color-acento);
+  }
+  100% {
+    text-shadow: 0 0 20px var(--color-texto-claro), 0 0 30px var(--color-texto-claro);
+  }
+}
+
+/* TEXTO SOBRE RECETAS CON MAYOR CONTRASTE */
+.card {
+  background: rgba(30, 20, 10, 0.9) !important;
+  color: var(--color-texto-claro) !important;
+  border: 2px solid var(--color-acento);
+}
+
+.card-title {
+  color: var(--color-texto-claro) !important;
+  font-weight: bold;
+  text-shadow: 0 0 5px var(--color-acento);
+}
+
+.card-text {
+  color: var(--color-texto-secundario) !important;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+/* IMÁGENES DE RECETAS MÁS DRAMÁTICAS */
+.receta-img {
+  filter: brightness(0.8) contrast(1.1);
+  transition: transform 0.5s ease, filter 0.5s ease;
+}
+.card:hover .receta-img {
+  transform: scale(1.05);
+  filter: brightness(1) contrast(1.2);
+}
+
+/* FONDO INTERACTIVO LUMINOSO EN RECETAS */
+#recetario-section {
+  background: radial-gradient(circle at center, rgba(100, 69, 38, 0.95), var(--color-fondo-medio)) !important;
+  background-size: 300% 300%;
+  animation: recetarioPulse 30s ease infinite;
+}
+
+@keyframes recetarioPulse {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* INDICADORES DE SCROLL MÁS VISIBLES */
+.arrow-svg {
+  animation: arrowBounce 1.2s ease-in-out infinite, glowArrow 2s ease-in-out infinite alternate;
+}
+
+@keyframes glowArrow {
+  0% { filter: drop-shadow(0 0 5px var(--color-acento)); }
+  100% { filter: drop-shadow(0 0 15px var(--color-acento)); }
+}
+
+/* MÁS DETALLES DINÁMICOS */
+.nav-link:hover, .footer-links li a:hover {
+  transform: scale(1.05);
+  text-shadow: 0 0 8px var(--color-acento);
+}
+
+/* SECCIONES FLUIDAS COMO GSAP */
+.section {
+  opacity: 0;
+  transform: translateY(50px);
+  animation: fadeSlideIn 1.5s ease forwards;
+}
+
+.section:nth-of-type(1) { animation-delay: 0.3s; }
+.section:nth-of-type(2) { animation-delay: 0.6s; }
+.section:nth-of-type(3) { animation-delay: 0.9s; }
+.section:nth-of-type(4) { animation-delay: 1.2s; }
+
+@keyframes fadeSlideIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+
+
+/* === SATURACIÓN DE ANIMACIONES Y TRANSICIONES === */
+
+/* Transición universal forzada */
+* {
+  transition: all 0.3s ease-in-out !important;
+}
+
+/* Zoom sutil al hacer hover en cualquier imagen */
+img:hover {
+  transform: scale(1.05);
+  filter: brightness(1.1) saturate(1.2);
+}
+
+/* Textos importantes con glitch animado */
+h1::after, h2::after {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 2px;
+  background: var(--color-acento);
+  animation: glitchBar 1.5s infinite ease-in-out alternate;
+}
+
+@keyframes glitchBar {
+  0% { transform: scaleX(0); opacity: 0; }
+  50% { transform: scaleX(1); opacity: 1; }
+  100% { transform: scaleX(0); opacity: 0; }
+}
+
+/* Brillo pulsante en enlaces */
+a:hover, .btn:hover {
+  text-shadow: 0 0 10px var(--color-texto-claro), 0 0 20px var(--color-acento);
+  transform: scale(1.07);
+}
+
+/* Luces activas girando en elementos destacados */
+.card::before, .img-about::before {
+  content: '';
+  position: absolute;
+  top: -10%;
+  left: -10%;
+  width: 120%;
+  height: 120%;
+  border-radius: 20px;
+  background: radial-gradient(circle, rgba(255,255,255,0.07), transparent 70%);
+  animation: rotateGlow 10s linear infinite;
+  z-index: 0;
+}
+
+@keyframes rotateGlow {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Brillo animado en íconos del navbar */
+.nav-icon {
+  animation: glowLoop 3s ease-in-out infinite alternate;
+}
+
+@keyframes glowLoop {
+  from { filter: drop-shadow(0 0 2px var(--color-acento)); }
+  to { filter: drop-shadow(0 0 10px var(--color-texto-claro)); }
+}
+
+/* Más profundidad en scroll */
+.section {
+  box-shadow: inset 0 0 60px rgba(0, 0, 0, 0.3);
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Títulos parpadeantes sutiles */
+h1, h2, .masked-text {
+  animation: flicker 6s infinite alternate ease-in-out;
+}
+
+@keyframes flicker {
+  0% { opacity: 1; }
+  45% { opacity: 0.92; }
+  50% { opacity: 0.6; }
+  55% { opacity: 0.92; }
+  100% { opacity: 1; }
+}
+
+/* Movimiento flotante más global */
+.floaty {
+  animation: floatY 5s ease-in-out infinite;
+}
+
+@keyframes floatY {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+/* Botones con movimiento 3D */
+button, .btn {
+  transform-style: preserve-3d;
+  perspective: 1000px;
+}
+
+button:hover, .btn:hover {
+  transform: rotateX(10deg) rotateY(5deg) scale(1.05);
+}
+
+/* Enfasis con rebote */
+.bounce-on-hover:hover {
+  animation: bounceFast 0.5s ease;
+}
+
+@keyframes bounceFast {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+  100% { transform: scale(1); }
+}
+
+
+
+/* === ANIMACIÓN SUPER SCROLL + EFECTO VANTA === */
+
+/* Transición visual entre secciones */
+.section {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  transition: opacity 0.8s ease, transform 1.2s ease;
+}
+
+.section::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, rgba(253, 255, 133, 0.04), transparent 70%);
+  z-index: -1;
+  animation: bgPulse 25s ease-in-out infinite;
+}
+
+@keyframes bgPulse {
+  0% { transform: scale(1); opacity: 0.4; }
+  50% { transform: scale(1.05); opacity: 0.6; }
+  100% { transform: scale(1); opacity: 0.4; }
+}
+
+/* Aparición progresiva con deslizamiento dinámico */
+.super-reveal {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+  filter: drop-shadow(0 0 10px var(--color-acento));
+  transition: all 1s ease;
+}
+
+.section:not(.super-reveal),
+.card:not(.super-reveal),
+.slide:not(.super-reveal),
+.img-about:not(.super-reveal) {
+  opacity: 0;
+  transform: translateY(80px);
+}
