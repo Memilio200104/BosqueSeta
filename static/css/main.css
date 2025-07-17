@@ -555,7 +555,7 @@ p {
   display: flex;
   align-items: center;
   justify-content: center;
-  position: relative; /* Ensure info is placed correctly */
+  position: relative; 
 }
 
 .slide img {
@@ -569,9 +569,9 @@ p {
 .info {
   display: none;
   position: absolute;
-  top: -30px;  /* Ajusta la distancia de la barra respecto a la imagen */
+  top: -30px;  
   left: 50%;
-  transform: translateX(-50%);  /* Centra el texto respecto a la imagen */
+  transform: translateX(-50%);  
   background-color: rgba(0, 0, 0, 0.7);
   color: white;
   padding: 8px;
@@ -580,7 +580,7 @@ p {
   font-size: 14px;
   width: 90%;
   box-sizing: border-box;
-  z-index: 2;  /* Asegura que la barra esté por encima de las imágenes */
+  z-index: 2; 
 }
 
 .slide:hover .info {
@@ -745,11 +745,6 @@ p {
   color: var(--color-texto-claro);
 }
 
-
-/* === MEJORAS AÑADIDAS POR CHATGPT === */
-
-/* === MEJORAS ADICIONALES ESTÉTICAS Y ANIMACIONES === */
-
 /* Fondo animado sutil */
 body::before {
   content: "";
@@ -860,11 +855,6 @@ h1:hover, h2:hover, .masked-text:hover {
     transform: translateY(0);
   }
 }
-
-
-/* === MEJORAS EXTREMAS Y CONTRASTE ARREGLADO === */
-
-/* === MÁS ESTILO Y EFECTOS AL MÁXIMO NIVEL === */
 
 /* EFECTO PARALLAX LENTO EN SECCIONES */
 .section {
@@ -996,12 +986,6 @@ button, .btn, .btn-primary {
     transform: translateY(0);
   }
 }
-
-
-
-
-/* === SATURACIÓN DE ANIMACIONES Y TRANSICIONES === */
-
 /* Transición universal forzada */
 * {
   transition: all 0.3s ease-in-out !important;
@@ -1113,10 +1097,6 @@ button:hover, .btn:hover {
   50% { transform: scale(1.2); }
   100% { transform: scale(1); }
 }
-
-
-
-/* === ANIMACIÓN SUPER SCROLL + EFECTO VANTA === */
 
 /* Transición visual entre secciones */
 .section {
